@@ -56,26 +56,36 @@ def chat():
 
         #PROMPT
         prompt = f"""
-Analisis teks berikut dan tentukan apakah termasuk Hoaks, Valid, atau Perlu Verifikasi.
+Kamu adalah AI pendeteksi hoaks dan literasi digital.
+
+Analisis teks berikut lalu tentukan:
+- Hoaks
+- Valid
+- Perlu Verifikasi
+
+Aturan:
+- Klaim berlebihan/tidak logis = Hoaks
+- Informasi tanpa sumber jelas = Perlu Verifikasi
+- Fakta umum dan masuk akal = Valid
+- Jawaban singkat dan tegas
+- Maksimal 120 kata
+- Jangan keluar format
 
 Teks:
 "{user_message}"
 
-Aturan:
-- Beri keputusan tegas
-- Minimal 3 indikator
-- Jangan menjawab di luar format
+Format wajib:
 
-Format jawaban:
+Label: status + persentase
 
-Label: (Hoaks / Valid / Perlu Verifikasi) - (xx%)
 Indikator:
-- ...
-- ...
-- ...
+- poin 1
+- poin 2
+- poin 3
+
 Saran:
-- ...
-- ...
+- poin 1
+- poin 2
 """
         reply = ask_model(prompt)
 

@@ -130,10 +130,6 @@ document.addEventListener("DOMContentLoaded", function(){
     `;
 }
 
-    chatBox.appendChild(botMsg);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-
 document.addEventListener("DOMContentLoaded", function(){
 
     const input = document.getElementById("userInput");
@@ -154,12 +150,6 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
     // UX
-
-    input.focus();
-    chatBox.scrollTo({
-        top: chatBox.scrollHeight,
-        behavior: "smooth"
-    });
     
 const links = document.querySelectorAll(".navbar-link");
 
@@ -224,15 +214,15 @@ document.getElementById("btnScroll").addEventListener("click", function() {
 });
 
     // Modul UI
-let modulData = {};
-let isLoaded = false;
+var modulData = {};
+var isLoaded = false;
 
 fetch("/static/modul.json")
     .then(res => res.json())
     .then(data => {
         modulData = data;
         isLoaded = true;
-        console.log("Modul loaded ✅");
+        console.log("Modul loaded");
     })
     .catch(err => {
         console.error("Gagal load modul:", err);
@@ -252,7 +242,7 @@ function openModal(modul) {
     const content = document.getElementById("modalContent");
     const modal = document.getElementById("modulModal");
 
-    const data = modulData[modul];
+    const data = modulData[String(modul)];
 
     if (!data) {
         alert("Modul tidak ditemukan");
